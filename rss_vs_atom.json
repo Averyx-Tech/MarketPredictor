@@ -1,0 +1,20 @@
+{
+    "rss_vs_atom": {
+        "author": "author",
+        "category": "category",
+        "channel": "feed",
+        "copyright": "rights",
+        "-": "subtitle",
+        "description": ["summary", "content"],
+        "generator": "generator",
+        "guid": "id",
+        "image": "logo",
+        "item": "entry",
+        "lastBuildDate": "updated",
+        "link": "link",
+        "managingEditor": ["author", "contributor"],
+        "pubDate": "published",
+        "title": "title",
+        "ttl": "-"  
+    }
+}
