@@ -68,6 +68,9 @@ for i in range(threads):
 ### parser function; thread function
 def rss_parser(consumer, parser):
     for msg in consumer:
+
+        #print(msg)
+        #continue
         record = json.loads(msg.value)
         last_update = record['last_update']
         last_update = parse(last_update)
@@ -80,16 +83,18 @@ def rss_parser(consumer, parser):
                     "vendor": record['vendor'],
                     "url": record['url']
                 }
-                mg_client[error_log_db][error_log_collection].insert(log)
+                mg_client[error_log_db][error_log_collection].insert_one(log)
+                print(log)
 
             elif news_record[0] == 'Exception':
                 log = {
                     "type": "Exception",
                     "vendor": record['vendor'],
                     "url": record['url'],
-                    "error_msg": news_record[1]
+                    "error_msg": str(news_record[1])
                 }
                 mg_client[error_log_db][error_log_collection].insert_one(log)
+                print(log)
 
             else:
                 for news in news_record:

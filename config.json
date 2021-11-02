@@ -1,28 +1,28 @@
-
+{
     "kafka": {
         "bootstrap_servers": ["ec2-18-116-108-20.us-east-2.compute.amazonaws.com"]
     },
 
     "mongodb": {
-        "host": "ec2-18-116-108-20.us-east-2.compute.amazonaws.com",
+        "host": "mongodb://vignesh:Vicky2201@ec2-18-116-108-20.us-east-2.compute.amazonaws.com",
         "port": 27017
     },
 
     "rss_link_producer":{
         "producer_topic": "pipeline_rss_links_01",
         "database": "vigil",
-        "collection": "rss_links"
+        "collection": "rss_links_new"
     },
 
     "rss_scrapers": {
         "threads": 10,
         "consumer_topic": "pipeline_rss_links_01",
-        "group_id": "group_scrapers_01",
+        "group_id": "group_scrapers_02",
 
         "error_log_db": "vigil",
         "error_log_collection": "error_log_rss_links",
         "rss_links_db": "vigil",
-        "rss_links_collection": "rss_links",
+        "rss_links_collection": "rss_links_new",
 
         "producer_topic": "pipeline_news_01"
     },

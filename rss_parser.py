@@ -40,7 +40,7 @@ class RSS_Parser:
                     if published > latest_update:
                         latest_update = published
 
-                    if published < last_update:
+                    if published <= last_update:
                         continue
 
                     title = entry['title']
@@ -55,7 +55,7 @@ class RSS_Parser:
                         key = 'content'
                     ###
 
-                    if pattern[-1] == key or pattern == []:
+                    if  pattern == [] or pattern[-1] == key:
                         summary = entry[key]
                         summary = bs(summary, 'html.parser')
                         summary = self.remove_tags(summary)
@@ -108,6 +108,7 @@ class RSS_Parser:
     """
     def clean_text(self, text):
         text = re.sub(r"^\W+|\W+$", '', text)
+        text = re.sub(r'[^\x00-\x7f]', '', text)
         return text
     """
         Exception Logger

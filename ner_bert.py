@@ -12,6 +12,7 @@ from sklearn.metrics import classification_report
 ### transformers
 from transformers import AutoModelForSequenceClassification
 import nltk
+nltk.download("punkt")
 
 ### finbert
 from finbert.finbert import *
@@ -75,7 +76,7 @@ mg_clients = {}
 for i in range(threads):
     consumers[i] = get_consumer(host=bootstrap_servers, topic=consumer_topic, group_id=group_id)
     mg_clients[i] = MongoClient(host=mg_host)
-    ner_models[i] = Ner(".large/out_large/")
+    ner_models[i] = Ner("./ner_base/")
     sentiment_models[i] = AutoModelForSequenceClassification.from_pretrained("./finbert/finbert")
 
 ### bert_ner & bert_sentiment 

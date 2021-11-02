@@ -39,4 +39,9 @@ for record in rss_links:
     record['last_update'] = str(record["last_update"])
     producer.send(topic, bytes(json.dumps(record), 'utf-8'))
 
-print('Produced all Links!')
+
+if rss_links == []:
+    print("No Links found on Database.")
+else:
+    print('Produced all Links!')
+            
